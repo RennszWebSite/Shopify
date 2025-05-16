@@ -1,5 +1,5 @@
 import { motion, useAnimation } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 interface FrozoLogoProps {
   width?: number;
@@ -18,6 +18,7 @@ const Y2KLogo = ({
 }: FrozoLogoProps) => {
   const controls = useAnimation();
   const [isGlitching, setIsGlitching] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (animated) {
@@ -43,80 +44,142 @@ const Y2KLogo = ({
     }
   }, [animated, controls]);
 
-  // Define Y2K-style vibrant colors
-  const gradientStops = [
-    '#ff00ff', // magenta
-    '#00ffff', // cyan
-    '#ffff00', // yellow
-    '#ff00ff', // magenta again (for looping)
-  ];
+  // Y2K logo styling elements
+  const createGlowFilter = () => {
+    return `drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #0ff) drop-shadow(0 0 6px #f0f)`;
+  };
 
   return (
-    <div className={`relative ${className}`} style={{ width, height }}>
+    <div 
+      ref={containerRef}
+      className={`relative ${className}`} 
+      style={{ width, height }}
+    >
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.95 }}
         animate={controls}
-        className="relative"
+        className="relative flex items-center justify-center h-full"
         style={{ 
-          transform: isGlitching ? `translate(${Math.random() * 5 - 2.5}px, ${Math.random() * 5 - 2.5}px)` : 'none'
+          transform: isGlitching ? `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)` : 'none'
         }}
       >
-        <div className="relative z-10 flex items-center justify-center h-full">
-          {/* Y2K logo text with proper cyberpunk/techno style */}
-          <div
-            className="text-transparent bg-clip-text"
-            style={{
-              fontFamily: "'Press Start 2P', 'VT323', monospace",
-              backgroundImage: `linear-gradient(90deg, ${gradientStops.join(', ')})`,
-              backgroundSize: '300% 100%',
-              animation: 'gradient-shift 4s linear infinite',
-              textShadow: `
-                0 0 10px rgba(255,255,255,0.7),
-                0 0 20px rgba(0,255,255,0.5),
-                0 0 30px rgba(255,0,255,0.5)
-              `,
-              fontSize: width / 5,
-              fontWeight: 'bold',
-              letterSpacing: '0.05em',
-              filter: 'drop-shadow(0 0 5px rgba(0,255,255,0.5))'
-            }}
-          >
-            FROZO
-          </div>
+        {/* Chrome/metallic background shape */}
+        <div 
+          className="absolute"
+          style={{
+            width: width * 0.95,
+            height: height * 0.6,
+            borderRadius: '12px',
+            background: 'linear-gradient(135deg, rgba(120,120,120,0.8), rgba(255,255,255,0.9), rgba(150,150,150,0.8))',
+            filter: 'brightness(1.1) contrast(1.2)',
+            transform: 'skewX(-5deg) rotate(-2deg)',
+            zIndex: 1,
+            boxShadow: '0 10px 20px rgba(0,0,0,0.5)'
+          }}
+        ></div>
+        
+        {/* Reflective upper highlight */}
+        <div 
+          className="absolute"
+          style={{
+            width: width * 0.75,
+            height: height * 0.15,
+            top: height * 0.1,
+            borderRadius: '4px',
+            background: 'linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.5), rgba(255,255,255,0.1))',
+            transform: 'skewX(-10deg) rotate(-1deg)',
+            zIndex: 3,
+            opacity: 0.7
+          }}
+        ></div>
+
+        {/* Main text */}
+        <div
+          className="relative z-5 px-2 py-1 text-center"
+          style={{
+            fontFamily: "'Audiowide', 'Orbitron', cursive, sans-serif",
+            fontSize: width / 4.5,
+            fontWeight: 'bold',
+            color: '#000',
+            textShadow: '1px 1px 0 rgba(255,255,255,0.5), -1px -1px 0 rgba(0,0,0,0.2)',
+            letterSpacing: '0.05em',
+            transform: isGlitching ? `skew(${Math.random() * 2 - 1}deg)` : 'skew(0deg)',
+            WebkitBackgroundClip: 'text',
+            zIndex: 2
+          }}
+        >
+          FROZO
+        </div>
+        
+        {/* Y2K decorative elements */}
+        <div 
+          className="absolute z-4"
+          style={{
+            bottom: height * 0.15,
+            width: width * 0.8,
+            height: '2px',
+            background: 'linear-gradient(90deg, transparent, #00ffff, #ff00ff, transparent)',
+            opacity: 0.8
+          }}
+        ></div>
+        
+        <div 
+          className="absolute z-4"
+          style={{
+            top: height * 0.15,
+            width: width * 0.7,
+            height: '1px',
+            background: 'linear-gradient(90deg, transparent, #ffff00, transparent)',
+            opacity: 0.8
+          }}
+        ></div>
+        
+        {/* Bottom tag line */}
+        <div
+          className="absolute z-4"
+          style={{
+            bottom: height * 0.05,
+            fontSize: width / 20,
+            fontFamily: "'Orbitron', sans-serif",
+            color: '#000',
+            textShadow: '0px 0px 2px rgba(255,255,255,0.5)',
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase'
+          }}
+        >
+          STREETWEAR 2025
         </div>
         
         {/* Glitch overlay */}
         {isGlitching && (
           <>
             <div 
-              className="absolute inset-0 z-20 mix-blend-screen" 
+              className="absolute inset-0 z-10 mix-blend-screen pointer-events-none" 
               style={{ 
-                left: `${Math.random() * 8 - 4}px`,
-                top: `${Math.random() * 4 - 2}px`,
-                opacity: 0.7,
-                backgroundColor: '#ff00ff'
+                left: `${Math.random() * 10 - 5}px`,
+                background: 'linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.3), transparent)',
+                opacity: 0.5
               }}
             />
             <div 
-              className="absolute inset-0 z-20 mix-blend-screen" 
+              className="absolute inset-0 z-10 mix-blend-screen pointer-events-none" 
               style={{ 
-                left: `${Math.random() * 8 - 4}px`,
-                top: `${Math.random() * 4 - 2}px`,
-                opacity: 0.7,
-                backgroundColor: '#00ffff'
+                left: `${Math.random() * 10 - 5}px`,
+                background: 'linear-gradient(45deg, transparent, rgba(255, 0, 255, 0.3), transparent)',
+                opacity: 0.5
               }}
             />
           </>
         )}
       </motion.div>
       
-      {/* Add style for gradient animation */}
+      {/* Add style for fonts and animations */}
       <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@500;700&display=swap');
         
-        @keyframes gradient-shift {
-          0% { background-position: 0% 50%; }
-          100% { background-position: 100% 50%; }
+        @keyframes shine {
+          from { background-position: 0%; }
+          to { background-position: 200%; }
         }
       `}} />
     </div>
