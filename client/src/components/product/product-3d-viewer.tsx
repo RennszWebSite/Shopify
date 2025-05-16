@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// Import OrbitControls properly
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 interface Product3DViewerProps {
   modelPath: string;

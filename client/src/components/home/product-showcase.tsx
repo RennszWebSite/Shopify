@@ -158,17 +158,27 @@ const ProductCard = ({ product, index }: { product: typeof products[0], index: n
             </motion.div>
           </div>
           
-          {/* Quick add button - visible on hover */}
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 bg-white text-black py-3 text-center font-bebas tracking-wider text-sm"
-            initial={{ y: '100%' }}
-            animate={{ y: isHovered ? 0 : '100%' }}
-            transition={{ duration: 0.3 }}
-            onClick={handleAddToCart}
-            data-hover="true"
-          >
-            QUICK ADD
-          </motion.div>
+          {/* Action buttons - visible on hover */}
+          <div className="absolute bottom-0 left-0 right-0 flex flex-col">
+            <Link 
+              href={`/product/${product.id}`}
+              className="bg-black border-t border-white border-opacity-20 text-white py-2 text-center font-bebas tracking-wider text-sm"
+              data-hover="true"
+            >
+              VIEW IN 3D
+            </Link>
+            
+            <motion.div
+              className="bg-white text-black py-2 text-center font-bebas tracking-wider text-sm"
+              initial={{ y: '100%' }}
+              animate={{ y: isHovered ? 0 : '100%' }}
+              transition={{ duration: 0.3 }}
+              onClick={handleAddToCart}
+              data-hover="true"
+            >
+              QUICK ADD
+            </motion.div>
+          </div>
         </div>
         
         {/* Product details */}
