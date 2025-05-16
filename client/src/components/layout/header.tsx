@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
+import Y2KLogo from "../ui/frozo-logo";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,18 +52,13 @@ const Header = () => {
         <div className="container mx-auto px-4">
           {/* Main Navigation */}
           <div className="relative flex justify-between items-center">
-            {/* Logo */}
+            {/* Y2K Logo */}
             <Link 
               href="/" 
               className="relative z-50 flex items-center" 
               data-hover="true"
             >
-              <h1 
-                className="text-4xl md:text-5xl font-bebas tracking-wider glitch-effect" 
-                data-text="FROZO"
-              >
-                FROZO
-              </h1>
+              <Y2KLogo width={150} height={50} animated={true} />
             </Link>
             
             {/* Desktop Menu */}
