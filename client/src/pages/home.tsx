@@ -9,6 +9,8 @@ import LookbookSection from "@/components/home/lookbook-section";
 import AtelierSection from "@/components/home/atelier-section";
 import NewsletterSection from "@/components/home/newsletter-section";
 import CountdownTimer from "@/components/home/countdown-timer";
+import StyleRecommendation from "@/components/home/style-recommendation";
+import MembersArea from "@/components/members/members-area";
 import { useAnimationPreloader } from "@/hooks/use-animation-preloader";
 
 const Home = () => {
@@ -77,6 +79,12 @@ const Home = () => {
         </div>
         
         <PrelaunchSignup />
+        <div className="py-20 container mx-auto px-6">
+          <MembersArea />
+        </div>
+        <div className="py-20 container mx-auto px-6">
+          <StyleRecommendation />
+        </div>
         <FeaturedCollections />
         <ProductShowcase />
         <LookbookSection />

@@ -33,8 +33,23 @@ const styleQuestions = [
   }
 ];
 
+// Define the recommendation result type
+interface StyleRecommendation {
+  style: string;
+  description: string;
+  products: Array<{
+    id: string;
+    name: string;
+    price: number;
+    image: string;
+  }>;
+}
+
+// Define recommendations record type with string keys
+type StyleRecommendations = Record<string, StyleRecommendation>;
+
 // Sample recommendation results based on answers
-const styleRecommendations = {
+const styleRecommendations: StyleRecommendations = {
   'a1-1_a2-1_a3-3': {
     style: 'MINIMALIST EXECUTIVE',
     description: 'Your style is defined by clean lines, monochromatic palettes, and sophisticated execution. Perfect for those who want to make a statement through restraint and quality materials.',
@@ -54,7 +69,7 @@ const styleRecommendations = {
 };
 
 // Generate a recommendation key for any combination of answers
-const getRecommendationKey = (answers: Record<string, string>) => {
+const getRecommendationKey = (answers: Record<string, string>): string => {
   const keys = Object.keys(answers).sort();
   const values = keys.map(key => answers[key]);
   const combinedKey = values.join('_');
@@ -274,7 +289,12 @@ const StyleRecommendation = ({ className = '' }: StyleRecommendationProps) => {
                   <div className="mb-8">
                     <h3 className="font-bebas tracking-wider text-xl mb-4">RECOMMENDED FOR YOU</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {recommendation.products.map((product) => (
+                      {recommendation.products.map((product: {
+                        id: string;
+                        name: string;
+                        price: number;
+                        image: string;
+                      }) => (
                         <Link 
                           key={product.id}
                           href={`/product/${product.id}`}
