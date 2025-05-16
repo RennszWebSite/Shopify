@@ -2,98 +2,178 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 
 const Footer = () => {
-  const fadeInUp = {
-    initial: { y: 20, opacity: 0 },
-    whileInView: { y: 0, opacity: 1 },
-    viewport: { once: true, margin: "-100px" },
-    transition: { duration: 0.8 }
-  };
-
   return (
-    <footer className="py-16 border-t border-white border-opacity-10">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          <motion.div {...fadeInUp} transition={{ duration: 0.8, delay: 0.1 }}>
-            <h3 className="font-cormorant text-2xl mb-6">FROZO</h3>
-            <p className="font-montserrat text-sm text-frozo-gray-light mb-6">
-              Premium streetwear for the modern connoisseur, blending timeless elegance with contemporary design.
+    <footer className="pt-20 pb-8 border-t border-white border-opacity-10">
+      <div className="container mx-auto px-6">
+        {/* Footer top with newsletter */}
+        <div className="flex flex-col md:flex-row gap-16 pb-16">
+          {/* Logo and about */}
+          <div className="md:w-1/3">
+            <h3 className="font-anton text-5xl mb-6">FROZO</h3>
+            <div className="h-0.5 w-12 bg-white mb-6"></div>
+            <p className="font-archivo text-white text-opacity-60 mb-6">
+              Pushing boundaries through innovation and design. Creating streetwear for the bold and fearless.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-frozo-gray-light hover:text-white transition-colors" data-hover="true">
+            
+            <div className="flex space-x-5 mt-8">
+              <a 
+                href="#" 
+                className="w-10 h-10 border border-white border-opacity-30 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300" 
+                data-hover="true"
+              >
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#" className="text-frozo-gray-light hover:text-white transition-colors" data-hover="true">
+              <a 
+                href="#" 
+                className="w-10 h-10 border border-white border-opacity-30 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300" 
+                data-hover="true"
+              >
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="#" className="text-frozo-gray-light hover:text-white transition-colors" data-hover="true">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" className="text-frozo-gray-light hover:text-white transition-colors" data-hover="true">
-                <i className="fab fa-pinterest-p"></i>
+              <a 
+                href="#" 
+                className="w-10 h-10 border border-white border-opacity-30 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300" 
+                data-hover="true"
+              >
+                <i className="fab fa-tiktok"></i>
               </a>
             </div>
-          </motion.div>
+          </div>
           
-          <motion.div {...fadeInUp} transition={{ duration: 0.8, delay: 0.2 }}>
-            <h4 className="font-montserrat uppercase text-sm tracking-wider mb-6">Collections</h4>
-            <ul className="font-montserrat text-sm text-frozo-gray-light space-y-3">
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">New Arrivals</a></li>
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">Monochrome Collection</a></li>
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">Shadow Play</a></li>
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">Architectural Silhouettes</a></li>
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">Limited Editions</a></li>
-            </ul>
-          </motion.div>
-          
-          <motion.div {...fadeInUp} transition={{ duration: 0.8, delay: 0.3 }}>
-            <h4 className="font-montserrat uppercase text-sm tracking-wider mb-6">Information</h4>
-            <ul className="font-montserrat text-sm text-frozo-gray-light space-y-3">
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">About FROZO</a></li>
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">The Atelier</a></li>
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">Sustainability</a></li>
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">Press</a></li>
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">Contact Us</a></li>
-            </ul>
-          </motion.div>
-          
-          <motion.div {...fadeInUp} transition={{ duration: 0.8, delay: 0.4 }}>
-            <h4 className="font-montserrat uppercase text-sm tracking-wider mb-6">Customer Service</h4>
-            <ul className="font-montserrat text-sm text-frozo-gray-light space-y-3">
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">Shipping & Returns</a></li>
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">Size Guide</a></li>
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">FAQs</a></li>
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors" data-hover="true">Terms & Conditions</a></li>
-            </ul>
-          </motion.div>
+          {/* Links columns */}
+          <div className="md:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <h4 className="font-bebas text-xl tracking-wider mb-6">SHOP</h4>
+              <div className="h-0.5 w-8 bg-white opacity-30 mb-4"></div>
+              <ul className="space-y-3">
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    New Arrivals
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    Best Sellers
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    Outerwear
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    Tops
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    Bottoms
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    Accessories
+                  </a>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-bebas text-xl tracking-wider mb-6">HELP</h4>
+              <div className="h-0.5 w-8 bg-white opacity-30 mb-4"></div>
+              <ul className="space-y-3">
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    FAQs
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    Shipping
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    Returns
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    Size Guide
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    Contact Us
+                  </a>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-bebas text-xl tracking-wider mb-6">ABOUT</h4>
+              <div className="h-0.5 w-8 bg-white opacity-30 mb-4"></div>
+              <ul className="space-y-3">
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    Our Story
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    Sustainability
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    Careers
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="font-archivo text-white text-opacity-60 hover:text-opacity-100 transition-colors" data-hover="true">
+                    Terms & Conditions
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         
-        <motion.div 
-          className="mt-16 pt-8 border-t border-white border-opacity-10 flex flex-col md:flex-row justify-between items-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          <p className="font-montserrat text-xs text-frozo-gray-light">&copy; {new Date().getFullYear()} FROZO. All Rights Reserved.</p>
-          <div className="mt-4 md:mt-0 flex space-x-2">
-            <svg className="h-6 w-auto" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0.5" y="0.5" width="39" height="23" rx="3.5" fill="black" stroke="white" strokeOpacity="0.1"/>
-              <path d="M10 17H14V7H10V17Z" fill="white" fillOpacity="0.8"/>
-              <path d="M26 17H30V7H26V17Z" fill="white" fillOpacity="0.8"/>
-              <path d="M18 17H22V7H18V17Z" fill="white" fillOpacity="0.8"/>
-            </svg>
-            <svg className="h-6 w-auto" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0.5" y="0.5" width="39" height="23" rx="3.5" fill="black" stroke="white" strokeOpacity="0.1"/>
-              <circle cx="20" cy="12" r="7" fill="white" fillOpacity="0.8"/>
-              <circle cx="16" cy="12" r="7" fill="black" fillOpacity="0.7"/>
-            </svg>
-            <svg className="h-6 w-auto" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0.5" y="0.5" width="39" height="23" rx="3.5" fill="black" stroke="white" strokeOpacity="0.1"/>
-              <path d="M10 12L16 7H24L30 12L24 17H16L10 12Z" fill="white" fillOpacity="0.8"/>
-            </svg>
+        {/* Footer bottom */}
+        <div className="pt-6 border-t border-white border-opacity-5 flex flex-col md:flex-row justify-between items-center">
+          <div className="font-archivo text-white text-opacity-40 text-sm mb-4 md:mb-0">
+            &copy; {new Date().getFullYear()} FROZO. All Rights Reserved.
           </div>
-        </motion.div>
+          
+          <div className="flex items-center gap-4">
+            <Link 
+              href="#" 
+              className="text-white text-opacity-40 hover:text-opacity-100 transition-colors text-sm font-archivo" 
+              data-hover="true"
+            >
+              Privacy
+            </Link>
+            <span className="text-white text-opacity-40">|</span>
+            <Link 
+              href="#" 
+              className="text-white text-opacity-40 hover:text-opacity-100 transition-colors text-sm font-archivo" 
+              data-hover="true"
+            >
+              Terms
+            </Link>
+            <div className="ml-4 flex gap-2">
+              <img src="https://cdn-icons-png.flaticon.com/128/196/196578.png" alt="Visa" className="h-6 w-auto opacity-50" />
+              <img src="https://cdn-icons-png.flaticon.com/128/196/196561.png" alt="Mastercard" className="h-6 w-auto opacity-50" />
+              <img src="https://cdn-icons-png.flaticon.com/128/196/196539.png" alt="PayPal" className="h-6 w-auto opacity-50" />
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );
