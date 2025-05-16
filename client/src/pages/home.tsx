@@ -8,6 +8,7 @@ import ProductShowcase from "@/components/home/product-showcase";
 import LookbookSection from "@/components/home/lookbook-section";
 import AtelierSection from "@/components/home/atelier-section";
 import NewsletterSection from "@/components/home/newsletter-section";
+import CountdownTimer from "@/components/home/countdown-timer";
 import { useAnimationPreloader } from "@/hooks/use-animation-preloader";
 
 const Home = () => {
@@ -41,6 +42,10 @@ const Home = () => {
     };
   }, []);
 
+  // Set drop date to 7 days from now for the limited edition timer
+  const dropDate = new Date();
+  dropDate.setDate(dropDate.getDate() + 7);
+
   if (isLoading) {
     return (
       <div className="fixed inset-0 z-50 bg-black flex items-center justify-center">
@@ -59,6 +64,18 @@ const Home = () => {
       <Header />
       <main>
         <HeroSection />
+        
+        {/* Limited Edition Drop Countdown */}
+        <div className="py-16 relative overflow-hidden">
+          <div className="container mx-auto px-6">
+            <CountdownTimer 
+              endDate={dropDate} 
+              title="MIDNIGHT COLLECTION DROP" 
+              subtitle="LIMITED EDITION PIECES - EXCLUSIVE EARLY ACCESS"
+            />
+          </div>
+        </div>
+        
         <PrelaunchSignup />
         <FeaturedCollections />
         <ProductShowcase />
